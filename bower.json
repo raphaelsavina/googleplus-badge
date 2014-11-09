@@ -1,0 +1,7 @@
+{
+  "name": "googleplus-badge#gh-pages",
+  "private": true,
+  "dependencies": {
+    "googleplus-badge": "kunalnagar/googleplus-badge#master"
+  }
+}

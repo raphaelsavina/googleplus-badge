@@ -1,0 +1,167 @@
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A Polymer Component for displaying Google+ Badges for Profiles, Pages or Communities.
+
+##### Example
+
+    <googleplus-badge></googleplus-badge>
+
+@element googleplus-badge
+@blurb Polymer Custom Component for displaying Google+ Badges for Profiles, Pages and Communities.
+@status alpha
+@homepage http://kunalnagar.github.io/googleplus-badge
+-->
+<polymer-element name="googleplus-badge" attributes="type href layout showphoto showcoverphoto showowners showtagline theme width">
+    <template>
+        <div id="gplusbadge"></div>
+        <div id="gpluserrors"></div>
+    </template>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        Polymer({
+            /**
+             * Specify if the badge is for a profile, page or community.
+             *
+             * Values: `profile` | `page` | `community`
+             * @attribute type
+             * @type string
+             * @default profile
+             */
+            type: 'profile',
+
+            /**
+             * URL to the Google+ profile / page / community
+             * @attribute href
+             * @type string
+             * @default https://plus.google.com/+KunalNagar
+             */
+            href: 'https://plus.google.com/+KunalNagar',
+
+            /**
+             * Sets the orientation of the badge
+             *
+             * Values: `portrait` | `landscape`
+             * @attribute layout
+             * @type string
+             * @default portrait
+             */
+            layout: 'portrait',
+
+            /**
+             * Displays the community profile photo if set to true and the photo exists.
+             *
+             * Can only be used with `type="community"`
+             *
+             * Values: `true` | `false`
+             * @attribute showphoto
+             * @type string
+             * @default true
+             */
+            showphoto: 'true',
+
+            /**
+             * Displays the cover photo in the badge if set to true and the photo exists.
+             *
+             * Values: `true` | `false`
+             * @attribute showcoverphoto
+             * @type string
+             * @default true
+             */
+            showcoverphoto: 'true',
+
+            /**
+             * Displays a list of community owners if set to true.
+             *
+             * Values: `true` | `false`
+             * @attribute showowners
+             * @type string
+             * @default true
+             */
+            showowners: 'true',
+
+            /**
+             * The pixel width of the badge to render.
+             *
+             * The following ranges are valid:
+             *
+             * Portrait layout: 180 to 450 pixels
+             *
+             * Landscape layout: 273 to 450 pixels
+             *
+             * @attribute width
+             * @type int
+             * @default 300
+             */
+            width: '200',
+
+            /**
+             * The color theme of the badge.
+             *
+             * Use dark when placing the badge on a page with a dark background.
+             *
+             * Values: `light` | `dark`
+             * @attribute theme
+             * @type string
+             * @default light
+             */
+            theme: 'light',
+            renderBadge: function() {
+                console.log(this.type);
+                switch(this.type) {
+                    case 'profile':
+                        var params = {
+                            'class': 'g-person',
+                            'href': this.href,
+                            'layout': this.layout,
+                            'showcoverphoto': this.showcoverphoto,
+                            'width': this.width,
+                            'theme': this.theme
+                        };
+                        gapi.person.render(this.$.gplusbadge, params);
+                        break;
+                    case 'page':
+                        var params = {
+                            'class': 'g-page',
+                            'href': this.href,
+                            'layout': this.layout,
+                            'showcoverphoto': this.showcoverphoto,
+                            'width': this.width,
+                            'theme': this.theme
+                        };
+                        gapi.page.render(this.$.gplusbadge, params);
+                        break;
+                    case 'community':
+                        var params = {
+                            'class': 'g-community',
+                            'href': this.href,
+                            'layout': this.layout,
+                            'showphoto': this.showphoto,
+                            'showowners': this.showowners,
+                            'width': this.width,
+                            'theme': this.theme
+                        };
+                        gapi.community.render(this.$.gplusbadge, params);
+                        break;
+                    default:
+                        var errorHTML   =   '<p>Please enter a valid type: profile, page, community. Copy the basic code below.</p>';
+                        errorHTML       +=  '<textarea rows="2" cols="60"><googleplus-badge type="profile"></googleplus-badge></textarea>';
+                        this.$.gpluserrors.innerHTML = errorHTML;
+                        break;
+                }
+            },
+            ready: function() {
+                this.async(this.renderBadge, null, 1000);
+            }
+        });
+    </script>
+</polymer-element>
