@@ -1,28 +1,24 @@
 {
-  	"name": "googleplus-badge",
-  	"version": "1.0.0",
-  	"authors": [
-    	"Kunal Nagar <knlnagar@gmail.com>"
-  	],
-  	"description": "A Polymer Component for displaying Google+ Badges for Profiles, Pages or Communities.",
-  	"keywords": [
-	    "web-component",
-	    "web-components",
-	    "polymer",
-	    "google+",
-	    "badge"
-  	],
-  	"main": "googleplus-badge.html",
-  	"license": "MIT",
-  	"homepage": "https://github.com/kunalnagar/googleplus-badge/",
-  	"ignore": [
-    	"/.*",
-    	"/tests/"
-  	],
-  	"dependencies": {
-    	"polymer": "Polymer/polymer#^0.4.2"
-  	},
-  	"devDependencies": {
-    	"web-component-tester": "Polymer/web-component-tester#^0.7.3"
-  	}
+    "name": "googleplus-badge",
+    "version": "1.2.0",
+    "private": true,
+    "authors": [
+        "Kunal Nagar <knlnagar@gmail.com>"
+    ],
+    "description": "A Polymer Component for displaying Google+ Badges for Profiles, Pages or Communities.",
+    "keywords": [
+        "web-components",
+        "polymer",
+        "google+",
+        "badge"
+    ],
+    "main": "googleplus-badge.html",
+    "license": "MIT",
+    "homepage": "https://github.com/raphaelsavina/googleplus-badge/",
+    "dependencies": {
+        "polymer": "Polymer/polymer#^1.0.0"
+    },
+    "devDependencies": {
+        "web-component-tester": "^4.0.0"
+    }
 }
