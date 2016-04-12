@@ -13,7 +13,10 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>googleplus-badge Demo</title>
 
-    <script src="../platform/platform.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="bower_components/polymer/polymer.html">
+
     <link rel="import" href="googleplus-badge.html">
 
 </head>
@@ -22,13 +25,20 @@
     <p>An example of using <code>&lt;googleplus-badge></code>:</p>
 
     <h2>Profile Badge</h2>
-    <googleplus-badge type="profile"></googleplus-badge>
+    Full specs
+    <googleplus-badge type="profile" href="https://plus.google.com/+RobDodson"  showcoverphoto showtagline theme="dark" width="450"></googleplus-badge>
+    Simple
+    <googleplus-badge type="profile" href="https://plus.google.com/+RobDodson" layout="landscape"></googleplus-badge>
+
+    <h2>Plus one</h2>
+    <p>polymer-project.org<googleplus-badge type="plusone" href="https://www.polymer-project.org" size="small"></googleplus-badge></p>
+
 
     <h2>Page Badge</h2>
-    <googleplus-badge type="page" href="https://plus.google.com/+GooglePlusDevelopers"></googleplus-badge>
+    <googleplus-badge type="page" href="https://plus.google.com/+PolymerProject/posts" showcoverphoto showtagline></googleplus-badge>
 
     <h2>Community Badge</h2>
-    <googleplus-badge type="community" href="https://plus.google.com/communities/104516377666905956948"></googleplus-badge>
+    <googleplus-badge type="community" href="https://plus.google.com/communities/115626364525706131031" showphoto showowners showtagline></googleplus-badge>
 
 </body>
 </html>
